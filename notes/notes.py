@@ -205,7 +205,7 @@ class Notes(commands.Cog):
 
     @commands.command()
     @commands.mod_or_permissions(manage_messages=True)
-    async def setnote(
+    async def newserverlore(
         self,
         ctx: commands.Context,
         member: Optional[discord.Member] = None,
@@ -213,23 +213,23 @@ class Notes(commands.Cog):
         note,
     ):
         """
-        Add a note to a user.
+        Add new server lore about a specific user.
 
         The member argument is optional and defaults to the command invoker"""
         member = member or ctx.author
         note = self._create_note(
             ctx.guild.id, ctx.author.id, note, member.id, NoteType.RegularNote
         )
-        await ctx.send(f"Note added to **{member}**\nNote:- {note}")
+        await ctx.send(f"Server lore added to **{member}**\nServer Lore:- {note}")
 
     @commands.command(name="allnotes", aliases=["guildnotes"])
     @commands.bot_has_permissions(embed_links=True)
     @commands.mod_or_permissions(manage_messages=True)
     async def allserverlore(self, ctx: commands.Context):
         """
-        See all the notes ever taken in your server.
+        See all the server lore  ever taken in your server.
 
-        This is a button based pagination session and each page contains a single user's notes"""
+        This is a button based pagination session and each page contains a single user's lore"""
         notes = self._get_notes(ctx.guild)
         if not notes:
             return await ctx.send("No notes found for this server.")
