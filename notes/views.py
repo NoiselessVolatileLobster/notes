@@ -13,7 +13,7 @@ def disable_items(self: View):
 async def interaction_check(ctx: commands.Context, interaction: discord.Interaction):
     if not ctx.author.id == interaction.user.id:
         await interaction.response.send_message(
-            "You aren't allowed to interact with this bruh. Back Off!", ephemeral=True
+            "You aren't allowed to interact with this.", ephemeral=True
         )
         return False
 
