@@ -225,7 +225,7 @@ class Notes(commands.Cog):
     @commands.command(name="allnotes", aliases=["guildnotes"])
     @commands.bot_has_permissions(embed_links=True)
     @commands.mod_or_permissions(manage_messages=True)
-    async def allnotes(self, ctx: commands.Context):
+    async def allserverlore(self, ctx: commands.Context):
         """
         See all the notes ever taken in your server.
 
@@ -250,7 +250,7 @@ class Notes(commands.Cog):
                     final += f"""**{page*5+j}**. {"(Donation note)" if note.type is NoteType.DonationNote else ""} \n{note}\n\n"""
                 embeds.append(
                     discord.Embed(
-                        title=f"Notes for {ctx.guild}",
+                        title=f"<:serverlore:1233086969739743324> Server Lore for {ctx.guild}",
                         description=final,
                         color=discord.Color.green(),
                     ).set_footer(text=f"Page {page+1}/{total_pages}")
@@ -265,9 +265,9 @@ class Notes(commands.Cog):
     @commands.command()
     @commands.bot_has_permissions(embed_links=True)
     @commands.mod_or_permissions(manage_messages=True)
-    async def notes(self, ctx: commands.Context, member: discord.User = commands.Author):
+    async def userlore(self, ctx: commands.Context, member: discord.User = commands.Author):
         """
-        See all the notes of a user.
+        See all server lore about a specific user.
 
         The member argument is optional and defaults to the command invoker"""
         notes = self._get_notes(ctx.guild, member)
@@ -293,7 +293,7 @@ class Notes(commands.Cog):
 
     @commands.command()
     @commands.mod_or_permissions(manage_messages=True)
-    async def delnote(
+    async def deletelore(
         self,
         ctx,
         member: discord.Member = commands.parameter(
@@ -302,10 +302,10 @@ class Notes(commands.Cog):
         id: int = commands.parameter(converter=int, default=0),
     ):
         """
-        Delete a note of a user.
+        Delete user lore for a specific user.
 
         The member argument is optional and defaults to the command invoker
-        The id argument is the index of the note which can be checked with the `[p]notes` command
+        The id argument is the index of the note which can be checked with the `t2userlore` command
         """
         try:
             removed = self._remove_note(ctx, member, id)
@@ -321,7 +321,7 @@ class Notes(commands.Cog):
 
     @commands.command()
     @commands.mod_or_permissions(manage_messages=True)
-    async def removenotes(self, ctx, user: discord.User = commands.Author):
+    async def deletealluserlore(self, ctx, user: discord.User = commands.Author):
         """
         Delete all notes of a user.
 
