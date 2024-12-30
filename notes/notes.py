@@ -220,7 +220,7 @@ class Notes(commands.Cog):
         note = self._create_note(
             ctx.guild.id, ctx.author.id, note, member.id, NoteType.RegularNote
         )
-        await ctx.send(f"Server lore added to **{member}**\nServer Lore:- {note}")
+        await ctx.send(f"<:serverlore:1233086969739743324> Server lore added to **{member}**\nServer Lore:- {note}")
 
     @commands.command(name="allnotes", aliases=["guildnotes"])
     @commands.bot_has_permissions(embed_links=True)
