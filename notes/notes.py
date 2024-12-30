@@ -222,10 +222,10 @@ class Notes(commands.Cog):
         )
         await ctx.send(f"<:serverlore:1233086969739743324> Server lore added to **{member}**\nServer Lore:- {note}")
 
-    @commands.command(name="allnotes", aliases=["guildnotes"])
+    @commands.command(name="allserverlore", aliases=["guildnotes"])
     @commands.bot_has_permissions(embed_links=True)
     @commands.mod_or_permissions(manage_messages=True)
-    async def allserverlore(self, ctx: commands.Context):
+    async def serverlore(self, ctx: commands.Context):
         """
         See all the server lore  ever taken in your server.
 
